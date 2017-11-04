@@ -1,1 +1,16 @@
-<h1>Hello world</h1>
+<html>
+<body>
+  <div id='react-app'></div>
+  <script type="application/javascript">
+  import React from 'react';
+  import ReactDOM from 'react-dom';
+  
+  const HelloWorld = () => (<div>Hello wolrd</div>)
+
+  ReactDOM.render(
+    <HelloWorld/>, 
+    document.getElementById('react-app')
+  );
+  </script>
+</body>
+</html>

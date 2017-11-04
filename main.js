@@ -6,8 +6,8 @@ let win
 
 function createWindow() {
   win = new BrowserWindow({
-    width: 400,
-    height: 300,
+    width: 1200,
+    height: 600,
   })
 
   win.loadURL(url.format({
@@ -15,6 +15,9 @@ function createWindow() {
     protocol: 'file:',
     slashes: true,
   }))
+
+  // Open the DevTools.
+  win.webContents.openDevTools()
 
   win.on('closed', () => {
     win = null

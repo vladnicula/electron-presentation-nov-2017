@@ -7,6 +7,8 @@
     "start": "electron ."
   },
   "dependencies": {
-    "electron": "^1.7.9"
+    "electron-prebuilt-compile": "^1.7.9",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
   }
 }
