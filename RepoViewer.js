@@ -1,6 +1,8 @@
 import React from 'react'
 import fetch from 'fetch'
 
+import { ipcRenderer } from 'electron'
+
 const fetchMyData = () => {
   return new Promise((resolve, reject) => {
     fetch.fetchUrl('https://api.github.com/orgs/facebook/repos', (err, meta, body) => {
@@ -27,7 +29,9 @@ export default class RepoViewer extends React.Component {
   }
 
   componentDidMount () {
-    fetchMyData().then((data)=>{
+    fetchMyData().then((data) => {
+      ipcRenderer.send('data-fetched', JSON.stringify(data[0].name))
+
       this.setState({
         repos: data
       })

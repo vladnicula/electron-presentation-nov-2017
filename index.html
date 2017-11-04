@@ -5,9 +5,14 @@
 <body>
   <div id='react-app'></div>
   <script type="application/javascript">
+  import { ipcRenderer } from 'electron';
   import React from 'react';
   import ReactDOM from 'react-dom';
   import RepoViewer from './RepoViewer';
+
+  ipcRenderer.on('beep', function (sender, data) {
+    console.log('window received', sender, data);
+  });
 
   ReactDOM.render(
     <RepoViewer/>, 

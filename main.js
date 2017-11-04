@@ -1,8 +1,18 @@
-const { app, Menu, BrowserWindow } = require('electron')
+const { app, Menu, BrowserWindow, ipcMain } = require('electron')
 const path = require('path')
 const url = require('url')
 
 let win
+
+ipcMain.on('data-fetched', (event, args) => {
+  console.log('data-fetched', args)
+  event.sender.send('beep', 'boop')
+})
+
+setTimeout(() => {
+  let contents = win.webContents
+  contents.send('beep', 'after 1 second')
+}, 1000)
 
 function createWindow() {
   win = new BrowserWindow({
