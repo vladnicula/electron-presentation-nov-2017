@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron')
+const { app, Menu, BrowserWindow } = require('electron')
 const path = require('path')
 const url = require('url')
 
@@ -21,4 +21,24 @@ function createWindow() {
   })
 }
 
-app.on('ready', createWindow)
+const template = [
+  {
+    label: 'Edit',
+    submenu: [
+      {role: 'undo'},
+      {role: 'redo'},
+    ]
+  }
+]
+
+app.on('ready', () => {
+  createWindow()
+  if (process.platform === 'darwin') {
+    template.unshift({
+      label: app.getName(),
+    })
+  }
+  const menu = Menu.buildFromTemplate(template)
+  Menu.setApplicationMenu(menu)
+})
+
