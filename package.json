@@ -10,6 +10,8 @@
     "electron-prebuilt-compile": "^1.7.9",
     "fetch": "^1.1.0",
     "react": "^16.0.0",
-    "react-dom": "^16.0.0"
+    "react-dom": "^16.0.0",
+    "semantic-ui-css": "^2.2.12",
+    "semantic-ui-react": "^0.75.1"
   }
 }

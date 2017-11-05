@@ -21,6 +21,16 @@ const fetchMyData = () => {
   })
 }
 
+const buildReallyLongSelectBox = () => {
+  return (
+    <select>
+      {new Array(100).fill(1).map((item, idx)=>(
+        <option>{idx}</option>
+      ))}
+    </select>
+  )
+}
+
 export default class RepoViewer extends React.Component {
 
   constructor (props) {
@@ -43,6 +53,7 @@ export default class RepoViewer extends React.Component {
     return (
       <div className='repo-list-container'>
         <h2>Repo list</h2>
+        {buildReallyLongSelectBox()}
         <div className='repo-list'>
         {repos.map((repo)=>(
           <div className='repo-list-item' key={repo.id}>
