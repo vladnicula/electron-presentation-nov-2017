@@ -1,4 +1,7 @@
-const { app, Menu, BrowserWindow, ipcMain } = require('electron')
+const { 
+  app, Menu, BrowserWindow, ipcMain,
+  dialog
+} = require('electron')
 const path = require('path')
 const url = require('url')
 
@@ -34,12 +37,28 @@ function createWindow() {
   })
 }
 
+const openDialog = () => {
+  dialog.showOpenDialog({
+    properties: ['openFile'],
+    filters: [
+      { name: 'Images (*.png|*.jpg)', extensions: [ 'png', 'jpg' ] },
+    ]
+  },
+  (fileNames)=>{
+    if (fileNames === undefined || fileNames.lenght === 0){
+        console.log("You didn't pick the file");
+        return;
+    }
+
+    win.webContents.send('file-open', fileNames[0])
+  })
+}
+
 const template = [
   {
-    label: 'Edit',
+    label: 'File',
     submenu: [
-      {role: 'undo'},
-      {role: 'redo'},
+      {label: 'Open', click: openDialog }
     ]
   }
 ]

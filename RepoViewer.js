@@ -25,7 +25,7 @@ const buildReallyLongSelectBox = () => {
   return (
     <select>
       {new Array(100).fill(1).map((item, idx)=>(
-        <option>{idx}</option>
+        <option key={idx}>{idx}</option>
       ))}
     </select>
   )

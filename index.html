@@ -10,8 +10,8 @@
   import ReactDOM from 'react-dom';
   import RepoViewer from './RepoViewer';
 
-  ipcRenderer.on('beep', function (sender, data) {
-    console.log('window received', sender, data);
+  ipcRenderer.on('file-open', function (sender, data) {
+    console.log('file open request received', data);
   });
 
   ReactDOM.render(
