@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "canvas-filters": "^1.0.1",
+    "electron-canvas-to-buffer": "^2.0.0",
     "electron-prebuilt-compile": "^1.7.9",
     "fetch": "^1.1.0",
     "react": "^16.0.0",

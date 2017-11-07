@@ -1,5 +1,6 @@
 import React from 'react'
 import ImageFilters from 'canvas-filters'
+import canvasBuffer from 'electron-canvas-to-buffer'
 
 export default class CanvasEditor extends React.Component {
   constructor (props) {
@@ -20,6 +21,10 @@ export default class CanvasEditor extends React.Component {
 
   componentWillReceiveProps (nextProps) {
     this.setImage(nextProps)
+  }
+
+  getFileData () {
+    return canvasBuffer(this.canvas, 'image/png')
   }
 
   setImage (props) {
@@ -48,6 +53,7 @@ export default class CanvasEditor extends React.Component {
           ctx.drawImage(image, 0, 0, width, height)   
           ctx.imageSmoothingEnabled = false
           this.ctx = ctx
+          this.canvas = canvas
         }, 10)
       })       
     })

@@ -54,11 +54,23 @@ const openDialog = () => {
   })
 }
 
+const saveDialog = () => {
+  dialog.showSaveDialog({
+    filters: [
+      { name: 'Images (*.png|*.jpg)', extensions: [ 'png', 'jpg' ] },
+    ]
+  },
+  (fileName)=>{
+    win.webContents.send('file-save', fileName)
+  })
+}
+
 const template = [
   {
     label: 'File',
     submenu: [
-      {label: 'Open', click: openDialog }
+      {label: 'Open', click: openDialog },
+      {label: 'Save', click: saveDialog }
     ]
   }
 ]
