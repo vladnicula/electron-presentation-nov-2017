@@ -8,14 +8,10 @@
   import { ipcRenderer } from 'electron';
   import React from 'react';
   import ReactDOM from 'react-dom';
-  import RepoViewer from './RepoViewer';
-
-  ipcRenderer.on('file-open', function (sender, data) {
-    console.log('file open request received', data);
-  });
+  import Container from './Container';
 
   ReactDOM.render(
-    <RepoViewer/>, 
+    <Container/>, 
     document.getElementById('react-app')
   );
   </script>
